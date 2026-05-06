@@ -1,0 +1,30 @@
+# Workflow that is not using reusable workflow
+name: Before
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+    outputs:
+      message: ${{ steps.get-message.outputs.message }}
+    steps:
+      - name: First step
+        id: get-message
+        run: |
+          echo "This is the first job"
+          echo "message=First things first" >> $GITHUB_OUTPUT
+
+  build:
+    runs-on: ubuntu-latest
+    needs: first
+
+    steps:
+      - name: First job message
+        run: echo ${{ needs.first.outputs.message }}

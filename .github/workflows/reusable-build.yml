@@ -1,0 +1,18 @@
+# Reusable build workflow
+name: Reusable Build
+
+on:
+  workflow_call:
+    inputs:
+      message:
+        description: Message from the first job
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: First job message
+        run: echo ${{ inputs.message }}
