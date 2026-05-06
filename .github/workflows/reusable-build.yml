@@ -8,11 +8,20 @@ on:
         description: Message from the first job
         required: true
         type: string
+    outputs:
+      result:
+        description: Result from the build job
+        value: ${{ jobs.build.outputs.result }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.set-result.outputs.result }}
 
     steps:
       - name: First job message
         run: echo ${{ inputs.message }}
+      - name: Set result
+        id: set-result
+        run: echo "result=Build complete" >> $GITHUB_OUTPUT
