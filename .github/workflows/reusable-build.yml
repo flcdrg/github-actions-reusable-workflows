@@ -35,7 +35,7 @@ jobs:
               run: |
                   echo "Using secrets: ${{ secrets.shush }}"
 
-                  echo "Using maybe-secret: ${{ inputs.maybe-secret }}"
+                  echo "Using maybe-secret: ${{ secrets.maybe-secret }}"
 
             - name: Set result
               id: set-result
