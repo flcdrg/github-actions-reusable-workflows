@@ -26,6 +26,8 @@ jobs:
     uses: ./.github/workflows/reusable-build.yml
     with:
       message: ${{ needs.first.outputs.message }}
+    secrets:
+      shush: ${{ secrets.GITHUB_TOKEN }}
 
   summary:
     runs-on: ubuntu-latest

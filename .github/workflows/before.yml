@@ -30,6 +30,10 @@ jobs:
     steps:
       - name: First job message
         run: echo ${{ needs.first.outputs.message }}
+      - name: Use secrets
+        run: |
+          echo "Using secrets: ${{ secrets.GITHUB_TOKEN }}"
+
       - name: Set result
         id: set-result
         run: echo "result=Build complete" >> $GITHUB_OUTPUT
