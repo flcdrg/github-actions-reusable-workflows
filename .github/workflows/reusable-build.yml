@@ -12,6 +12,10 @@ on:
             shush:
                 description: A secret
                 required: true
+            maybe-secret:
+                description: An optional secret
+                required: true
+
         outputs:
             result:
                 description: Result from the build job
@@ -30,6 +34,8 @@ jobs:
             - name: Use secrets
               run: |
                   echo "Using secrets: ${{ secrets.shush }}"
+
+                  echo "Using maybe-secret: ${{ inputs.maybe-secret }}"
 
             - name: Set result
               id: set-result

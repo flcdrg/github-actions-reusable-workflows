@@ -28,6 +28,7 @@ jobs:
       message: ${{ needs.first.outputs.message }}
     secrets:
       shush: ${{ secrets.GITHUB_TOKEN }}
+      maybe-secret: ${{ needs.first.outputs.message }}      
 
   summary:
     runs-on: ubuntu-latest
